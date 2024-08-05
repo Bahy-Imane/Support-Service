@@ -30,6 +30,9 @@ public class Equipment {
     @Column(nullable = false)
     private String status;
 
+    @Column(nullable = false)
+    private String img;
+
     @OneToMany(mappedBy = "equipment")
     private List<Failure> failures;
 

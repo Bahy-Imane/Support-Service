@@ -1,18 +1,16 @@
 package Support.Service.model;
 
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-
+import jakarta.persistence.*;
+import lombok.*;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @Entity
-@Table(name = "admin")
+@DiscriminatorValue("ADMIN")
 public class Admin extends Person {
 
+    @Override
+    public String getRole() {
+        return "ROLE_ADMIN";
+    }
 }

@@ -1,25 +1,23 @@
 package Support.Service.model;
-
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
+import lombok.*;
+import org.springframework.security.core.userdetails.UserDetails;
 
 @Setter
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@MappedSuperclass
+@Entity
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="role", discriminatorType=DiscriminatorType.STRING)
 public abstract class Person {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long personId;
 
     @Column(nullable = false, unique = true)
-    private String username;
+    private String userName;
 
     @Column(nullable = false, unique = true)
     private String email;
@@ -27,5 +25,6 @@ public abstract class Person {
     @Column(nullable = false)
     private String password;
 
+    public abstract String getRole();
 
 }

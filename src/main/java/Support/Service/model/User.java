@@ -1,25 +1,27 @@
 package Support.Service.model;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.persistence.*;
+import lombok.*;
+import java.util.List;
 
 
 @Setter
 @Getter
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
-@Table(name = "users")
+@DiscriminatorValue("USER")
 public class User extends Person {
 
     @OneToMany(mappedBy = "user")
-    private List<Ticket> tickets;
+    private List<Failure> failures;
+
+    @OneToMany(mappedBy = "user")
+    private List<SupportTicket> tickets;
+
+    @Override
+    public String getRole() {
+        return "ROLE_USER";
+    }
 
 }
 

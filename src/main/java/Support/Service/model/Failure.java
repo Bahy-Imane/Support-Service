@@ -32,6 +32,9 @@ public class Failure {
     @JoinColumn(name = "equipment_id", nullable = false)
     private Equipment equipment;
 
+    @ManyToOne
+    private User user;
+
     @Enumerated(EnumType.STRING)
     private FailureStatus status;
 

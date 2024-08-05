@@ -1,12 +1,8 @@
 package Support.Service.model;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
+import jakarta.persistence.*;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
@@ -14,14 +10,18 @@ import java.util.List;
 
 @Setter
 @Getter
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
-@Table(name = "technicians")
+@DiscriminatorValue("TECHNICIAN")
 public class Technician extends Person {
+
 
     @OneToMany(mappedBy = "technician")
     private List<SupportTicket> tickets;
 
+
+    @Override
+    public String getRole() {
+        return "ROLE_TECHNICIAN";
+    }
 }
 
