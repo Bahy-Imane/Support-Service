@@ -1,5 +1,6 @@
 package Support.Service.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,7 +20,7 @@ public class Equipment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long equipmentId;
 
     @Column(nullable = false)
     private String name;
@@ -34,7 +35,10 @@ public class Equipment {
     private String img;
 
     @OneToMany(mappedBy = "equipment")
+    @JsonIgnore
     private List<Failure> failures;
 
+    @ManyToOne
+    private User user;
 
 }

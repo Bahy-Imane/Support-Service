@@ -18,6 +18,9 @@ public class User extends Person {
     @OneToMany(mappedBy = "user")
     private List<SupportTicket> tickets;
 
+    @OneToMany(mappedBy = "user")
+    private List<Equipment> equipments;
+
     @Override
     public String getRole() {
         return "ROLE_USER";

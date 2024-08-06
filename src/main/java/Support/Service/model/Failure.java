@@ -20,13 +20,21 @@ public class Failure {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long failureId;
 
     @Column(nullable = false)
     private String description;
 
     @Column(nullable = false)
     private LocalDateTime reportedAt;
+
+    @Column(nullable = false)
+    private String reportedBy;
+
+
+    @Enumerated(EnumType.STRING)
+    private FailureStatus status;
+
 
     @ManyToOne
     @JoinColumn(name = "equipment_id", nullable = false)
@@ -35,8 +43,8 @@ public class Failure {
     @ManyToOne
     private User user;
 
-    @Enumerated(EnumType.STRING)
-    private FailureStatus status;
 
-    // Getters and Setters
+
+
+
 }
