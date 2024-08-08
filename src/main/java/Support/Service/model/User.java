@@ -13,13 +13,7 @@ import java.util.List;
 public class User extends Person {
 
     @OneToMany(mappedBy = "user")
-    private List<Failure> failures;
-
-    @OneToMany(mappedBy = "user")
     private List<SupportTicket> tickets;
-
-    @OneToMany(mappedBy = "user")
-    private List<Equipment> equipments;
 
     @Override
     public String getRole() {

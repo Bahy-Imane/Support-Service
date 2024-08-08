@@ -2,10 +2,8 @@ package Support.Service.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+
 
 import java.util.List;
 
@@ -29,16 +27,19 @@ public class Equipment {
     private String type;
 
     @Column(nullable = false)
-    private String status;
+    private String EqStatus;
 
     @Column(nullable = false)
     private String img;
 
+    @OneToMany
+    @JsonIgnore
+    private List<SupportTicket> supportTicket;
+
     @OneToMany(mappedBy = "equipment")
     @JsonIgnore
-    private List<Failure> failures;
+    private List<FailureHistory> failureHistory;
 
-    @ManyToOne
-    private User user;
+
 
 }

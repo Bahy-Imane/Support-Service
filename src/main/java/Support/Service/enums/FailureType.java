@@ -1,0 +1,13 @@
+package Support.Service.enums;
+
+public enum FailureType {
+    HARDWARE_FAILURE,
+    SOFTWARE_FAILURE,
+    NETWORK_FAILURE,
+    PERFORMANCE_FAILURE,
+    SECURITY_FAILURE,
+    POWER_FAILURE,
+    CONNECTIVITY_FAILURE,
+    STORAGE_FAILURE
+}
+

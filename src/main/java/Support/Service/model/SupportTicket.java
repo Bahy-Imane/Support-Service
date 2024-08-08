@@ -1,8 +1,6 @@
 package Support.Service.model;
 
-
-
-import Support.Service.enu.TicketStatus;
+import Support.Service.enums.TicketStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,7 +19,7 @@ public class SupportTicket {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long tickettId;
 
     @Column(nullable = false)
     private String subject;
@@ -29,16 +27,25 @@ public class SupportTicket {
     @Column(nullable = false)
     private LocalDateTime createdAt;
 
+    @Enumerated(EnumType.STRING)
+    private TicketStatus ticketStatus;
+
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     @ManyToOne
+    @JoinColumn(name ="equipment_id",nullable = false)
+    private Equipment equipment;
+
+    @ManyToOne
     @JoinColumn(name = "technician_id")
     private Technician technician;
 
-    @Enumerated(EnumType.STRING)
-    private TicketStatus status;
+
+    @ManyToOne
+    @JoinColumn(name = "failure_id")
+    private Failure failure;
 
 
 }

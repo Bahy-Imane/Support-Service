@@ -1,7 +1,6 @@
 package Support.Service.dto;
 
 
-import Support.Service.enu.FailureStatus;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,8 +10,11 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class FailureDtoRegister {
+public class SupportTicketDto {
 
-    private FailureStatus status;
-    private String note;
+    private Long equipmentId;
+    private Long failureId;
+    private String subject;
+
 }
+

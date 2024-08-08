@@ -16,6 +16,7 @@ public class EquipmentService {
         private EquipmentRepository equipmentRepository;
 
         public List<Equipment> findAllEquipments() {
+
             return equipmentRepository.findAll();
         }
 
@@ -34,7 +35,7 @@ public class EquipmentService {
             Equipment equipment1 = equipmentRepository.findById(equipmentId)
                     .orElseThrow(() -> new RuntimeException("Equipment not found"));
             equipment1.setName(equipment.getName());
-            equipment1.setStatus(equipment.getStatus());
+            equipment1.setEqStatus(equipment.getEqStatus());
             equipment1.setType(equipment.getType());
             equipment1.setImg(equipment.getImg());
             return equipmentRepository.save(equipment1);

@@ -1,7 +1,7 @@
 package Support.Service.model;
 
-
-import Support.Service.enu.FailureStatus;
+import Support.Service.enums.FailureType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Setter
 @Getter
@@ -25,26 +26,15 @@ public class Failure {
     @Column(nullable = false)
     private String description;
 
-    @Column(nullable = false)
-    private LocalDateTime reportedAt;
-
-    @Column(nullable = false)
-    private String reportedBy;
-
-
     @Enumerated(EnumType.STRING)
-    private FailureStatus status;
+    private FailureType fType;
+
+    @OneToMany(mappedBy = "failure", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<SupportTicket> supportTickets;
 
 
-    @ManyToOne
-    @JoinColumn(name = "equipment_id", nullable = false)
-    private Equipment equipment;
-
-    @ManyToOne
-    private User user;
-
-
-
+    @OneToMany(mappedBy = "failure", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<FailureHistory> failureHistory;
 
 
 }
