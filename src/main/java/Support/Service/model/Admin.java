@@ -9,8 +9,4 @@ import lombok.*;
 @DiscriminatorValue("ADMIN")
 public class Admin extends Person {
 
-    @Override
-    public String getRole() {
-        return "ROLE_ADMIN";
-    }
 }

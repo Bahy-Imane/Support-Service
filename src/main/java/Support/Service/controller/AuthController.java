@@ -7,7 +7,6 @@ import Support.Service.service.AuthService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
@@ -20,14 +19,14 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<JwtAuthResponse> login(@RequestBody LoginDto loginDto) {
-        System.out.println("hyyyyyyyyyyy");
         JwtAuthResponse response = authService.login(loginDto);
         return ResponseEntity.ok(response);
     }
 
+
     @PostMapping("/signup")
     public ResponseEntity<String> register(@RequestBody SignUpDto signUpDto) {
-        String response = authService.register(signUpDto);
+        String response = authService.signUp(signUpDto);
         return ResponseEntity.ok(response);
     }
 }

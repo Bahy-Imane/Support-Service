@@ -14,14 +14,14 @@ public class FailureController {
     @Autowired
     private FailureService failureService;
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
     public ResponseEntity<Failure> addFailure(@RequestBody Failure failure) {
         failureService.addFailure(failure);
         return ResponseEntity.ok(failure);
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/{failureId}")
     public ResponseEntity<Failure> updateFailure(@PathVariable Long failureId, @RequestBody Failure failure) {
         failureService.updateFailure(failureId, failure);

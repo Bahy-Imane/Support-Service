@@ -27,7 +27,7 @@ public class Equipment {
     private String type;
 
     @Column(nullable = false)
-    private String EqStatus;
+    private String status;
 
     @Column(nullable = false)
     private String img;

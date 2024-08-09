@@ -1,8 +1,12 @@
 package Support.Service.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
+
+import java.util.Collection;
 import java.util.List;
 
 
@@ -12,13 +16,9 @@ import java.util.List;
 @DiscriminatorValue("USER")
 public class User extends Person {
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
+    @JsonIgnore
     private List<SupportTicket> tickets;
-
-    @Override
-    public String getRole() {
-        return "ROLE_USER";
-    }
 
 }
 

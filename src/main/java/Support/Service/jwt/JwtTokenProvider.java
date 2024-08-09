@@ -40,8 +40,13 @@ public class JwtTokenProvider {
         Person person = personRepository.findByUserNameOrEmail(userName, userName);
 
         Map<String, Object> claims = new HashMap<>();
-        claims.put("userName", person.getUserName());
-        claims.put("personRole", person.getRole());
+        claims.put("userName", person.getUsername());
+        String role = person.getAuthorities().stream()
+                .map(authority -> authority.getAuthority().replace("ROLE_", ""))
+                .findFirst()
+                .orElse(null);
+
+        claims.put("personRole", role);
         claims.put("personId", person.getPersonId());
 
         return Jwts.builder()

@@ -1,8 +1,10 @@
 package Support.Service.controller;
 
 import Support.Service.dto.SupportTicketDto;
+import Support.Service.model.Person;
 import Support.Service.model.SupportTicket;
 import Support.Service.model.User;
+import Support.Service.security.CustomUserDetailsService;
 import Support.Service.service.SupportTicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,8 +15,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+//@CrossOrigin("*")
 @RestController
-@RequestMapping("/api/support-tickets")
+@RequestMapping("/api/supportTicket")
 public class SupportTicketController {
 
     @Autowired
@@ -22,9 +25,10 @@ public class SupportTicketController {
 
 
     @PreAuthorize("hasRole('ROLE_USER')")
-    @PostMapping
-    public ResponseEntity<SupportTicket> createTicket(@AuthenticationPrincipal User user, @RequestBody SupportTicketDto supportTicketDto) {
-        SupportTicket supportTicket = supportTicketService.createTicket(user, supportTicketDto);
+    @PostMapping("/Create")
+    public ResponseEntity<SupportTicket> createTicket(@AuthenticationPrincipal Person user, @RequestBody SupportTicketDto supportTicketDto) {
+        User user1 = (User) user;
+        SupportTicket supportTicket = supportTicketService.createTicket(user1, supportTicketDto);
         return new ResponseEntity<>(supportTicket, HttpStatus.CREATED);
     }
 
@@ -48,11 +52,12 @@ public class SupportTicketController {
 //        return new ResponseEntity<>(supportTicket, HttpStatus.OK);
 //    }
 
-//    @GetMapping
-//    public ResponseEntity<List<SupportTicket>> getAllTickets() {
-//        List<SupportTicket> tickets = supportTicketService.findAll();
-//        return new ResponseEntity<>(tickets, HttpStatus.OK);
-//    }
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @GetMapping
+    public ResponseEntity<List<SupportTicket>> getAllTickets() {
+        List<SupportTicket> tickets = supportTicketService.findAll();
+        return new ResponseEntity<>(tickets, HttpStatus.OK);
+    }
 
     @PreAuthorize("hasRole('ROLE_TECHNICIAN')")
     @GetMapping("/technician/{technicianId}")

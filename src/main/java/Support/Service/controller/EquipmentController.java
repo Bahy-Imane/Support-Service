@@ -17,28 +17,28 @@ public class EquipmentController {
     private EquipmentService equipmentService;
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    @GetMapping
+    @GetMapping("/all")
     public ResponseEntity<List<Equipment>> getAllEquipment() {
         List<Equipment> equipments = equipmentService.findAllEquipments();
         return ResponseEntity.ok(equipments);
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    @PostMapping
+    @PostMapping("/add")
     public Equipment addEquipment(@RequestBody Equipment equipment) {
         equipmentService.saveEquipment(equipment);
         return equipment;
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    @PutMapping("/{equipmentId}")
+    @PutMapping("(/update/{equipmentId}")
     public Equipment updateEquipment(@PathVariable Long equipmentId, @RequestBody Equipment equipment) {
         equipmentService.updateEquipment(equipmentId, equipment);
         return equipment;
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    @DeleteMapping("/{equipmentId}")
+    @DeleteMapping("/delete/{equipmentId}")
     public void deleteEquipment(@PathVariable Long equipmentId) {
         equipmentService.deleteEquipment(equipmentId);
     }

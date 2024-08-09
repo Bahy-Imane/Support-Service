@@ -1,14 +1,12 @@
 package Support.Service.model;
 
 import Support.Service.enums.FailureType;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Setter
@@ -27,7 +25,7 @@ public class Failure {
     private String description;
 
     @Enumerated(EnumType.STRING)
-    private FailureType fType;
+    private FailureType type;
 
     @OneToMany(mappedBy = "failure", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<SupportTicket> supportTickets;

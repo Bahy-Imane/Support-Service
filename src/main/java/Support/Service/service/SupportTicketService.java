@@ -9,6 +9,7 @@ import Support.Service.repository.PersonRepository;
 import Support.Service.repository.SupportTicketRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -35,25 +36,25 @@ public class SupportTicketService {
         return supportTicketRepository.findById(ticketId).orElse(null);
     }
 
-
+    @Transactional
     public SupportTicket createTicket(User user, SupportTicketDto supportTicketDto) {
         SupportTicket supportTicket = new SupportTicket();
         Equipment equipment = equipmentRepository.findById(supportTicketDto.getEquipmentId()).orElse(null);
         Failure failure = failureRepository.findById(supportTicketDto.getFailureId()).orElse(null);
 
-        if (equipment == null || failure == null) {
-            throw new IllegalArgumentException("Invalid equipment or failure ID");
-        }
+        System.out.println("eeeeeeeeeeeeeeeeeee"+user.toString());
 
-        supportTicket.setUser(user);
+        supportTicket.setSubject(supportTicketDto.getSubject());
         supportTicket.setEquipment(equipment);
         supportTicket.setFailure(failure);
-        supportTicket.setSubject(supportTicketDto.getSubject());
-        supportTicket.setTicketStatus(TicketStatus.OPEN);
+        supportTicket.setUser(user);
+
+        supportTicket.setTicketStatus(TicketStatus.REPORTED);
         supportTicket.setCreatedAt(LocalDateTime.now());
 
         return supportTicketRepository.save(supportTicket);
     }
+
 
 
 

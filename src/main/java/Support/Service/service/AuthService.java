@@ -3,6 +3,7 @@ package Support.Service.service;
 import Support.Service.dto.JwtAuthResponse;
 import Support.Service.dto.LoginDto;
 import Support.Service.dto.SignUpDto;
+import Support.Service.enums.Role;
 import Support.Service.jwt.JwtTokenProvider;
 import Support.Service.model.Person;
 import Support.Service.model.User;
@@ -43,28 +44,26 @@ public class AuthService {
         response.setAccessToken(token);
 
         response.setTokenType("Bearer");
-        response.setUserName(person.getUserName());
-        response.setRole(person.getRole());
+        response.setUserName(person.getUsername());
+//        response.setRole(person.getRole());
         response.setPersonId(person.getPersonId());
         System.out.println("response"+response);
         return response;
     }
 
-    public String register(SignUpDto signUpDto) {
-        if (personRepository.existsByUserName(signUpDto.getUserName())) {
-            throw new RuntimeException("Username is already taken!");
-        }
-        if (personRepository.existsByEmail(signUpDto.getEmail())) {
-            throw new RuntimeException("Email is already taken!");
-        }
+
+    public String signUp(SignUpDto signUpDto) {
+//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
         Person person = new User();
         person.setUserName(signUpDto.getUserName());
         person.setEmail(signUpDto.getEmail());
+        person.setRole(Role.ADMIN);
         person.setPassword(passwordEncoder.encode(signUpDto.getPassword()));
 
         personRepository.save(person);
 
         return "User registered successfully!";
     }
-}
+    }
+

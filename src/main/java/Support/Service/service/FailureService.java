@@ -29,7 +29,7 @@ public class FailureService {
     public Failure updateFailure(Long failureId, Failure failure) {
         Failure failure1=failureRepository.findById(failureId).get();
         failure1.setDescription(failure.getDescription());
-        failure1.setFType(failure.getFType());
+        failure1.setType(failure.getType());
         failureRepository.save(failure1);
         return failure1;
     }
