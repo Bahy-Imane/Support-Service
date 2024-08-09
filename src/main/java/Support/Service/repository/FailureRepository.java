@@ -11,4 +11,7 @@ import java.util.List;
 
 @Repository
 public interface FailureRepository extends JpaRepository<Failure, Long> {
+    @Query(value = "select f from Failure f JOIN f.equipments e  where e.equipmentId = :equipment_id")
+    List<Failure> findFailureByEquipmentsId(Long equipment_id);
+
 }

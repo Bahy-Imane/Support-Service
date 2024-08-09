@@ -4,7 +4,6 @@ import Support.Service.dto.SupportTicketDto;
 import Support.Service.model.Person;
 import Support.Service.model.SupportTicket;
 import Support.Service.model.User;
-import Support.Service.security.CustomUserDetailsService;
 import Support.Service.service.SupportTicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,7 +23,7 @@ public class SupportTicketController {
     private SupportTicketService supportTicketService;
 
 
-    @PreAuthorize("hasRole('ROLE_USER')")
+    @PreAuthorize("hasRole('USER')")
     @PostMapping("/Create")
     public ResponseEntity<SupportTicket> createTicket(@AuthenticationPrincipal Person user, @RequestBody SupportTicketDto supportTicketDto) {
         User user1 = (User) user;
@@ -33,7 +32,7 @@ public class SupportTicketController {
     }
 
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/{ticketId}/assign/{technicianId}")
     public ResponseEntity<SupportTicket> assignTicketToTechnician(
             @PathVariable Long ticketId,
@@ -42,34 +41,35 @@ public class SupportTicketController {
         return new ResponseEntity<>(supportTicket, HttpStatus.OK);
     }
 
+    @PreAuthorize("hasRole('TECHNICIAN')")
+    @PutMapping("/status/{ticketId}")
+    public SupportTicket updateTicketStatus(@PathVariable Long ticketId, @RequestBody SupportTicket supportTicket) {
+        return supportTicketService.updateTicketStatus(supportTicket,ticketId);
 
-//    @GetMapping("/{ticketId}")
-//    public ResponseEntity<SupportTicket> getTicketById(@PathVariable Long ticketId) {
-//        SupportTicket supportTicket = supportTicketService.findById(ticketId);
-//        if (supportTicket == null) {
-//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//        }
-//        return new ResponseEntity<>(supportTicket, HttpStatus.OK);
-//    }
+    }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping
     public ResponseEntity<List<SupportTicket>> getAllTickets() {
         List<SupportTicket> tickets = supportTicketService.findAll();
         return new ResponseEntity<>(tickets, HttpStatus.OK);
     }
 
-    @PreAuthorize("hasRole('ROLE_TECHNICIAN')")
-    @GetMapping("/technician/{technicianId}")
-    public ResponseEntity<List<SupportTicket>> getTicketsByTechnician(@PathVariable Long technicianId) {
-        List<SupportTicket> tickets = supportTicketService.findTicketsByTechnician(technicianId);
-        return new ResponseEntity<>(tickets, HttpStatus.OK);
-    }
 
-    @PreAuthorize("hasRole('ROLE_USER')")
+
+    @PreAuthorize("hasRole('USER')")
     @GetMapping("/user/{userId}")
     public ResponseEntity<List<SupportTicket>> getTicketsByUser(@PathVariable Long userId) {
         List<SupportTicket> tickets = supportTicketService.findTicketsByUser(userId);
         return new ResponseEntity<>(tickets, HttpStatus.OK);
     }
+
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN', 'TECHNICIAN')")
+    @GetMapping("/{ticketId}")
+    public ResponseEntity<SupportTicket> getTicketById(@PathVariable Long ticketId) {
+        SupportTicket supportTicket = supportTicketService.findTicketById(ticketId);
+        return new ResponseEntity<>(supportTicket, HttpStatus.OK);
+    }
+
 }

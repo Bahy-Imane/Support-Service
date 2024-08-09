@@ -1,6 +1,7 @@
 package Support.Service.model;
 
 import Support.Service.enums.TicketStatus;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -31,19 +32,23 @@ public class SupportTicket {
     private TicketStatus ticketStatus;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name ="equipment_id",nullable = false)
     private Equipment equipment;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "technician_id")
     private Technician technician;
 
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "failure_id")
     private Failure failure;
 

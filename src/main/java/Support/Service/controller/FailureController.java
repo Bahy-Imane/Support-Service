@@ -1,6 +1,7 @@
 package Support.Service.controller;
 
 import Support.Service.model.Failure;
+import Support.Service.service.EquipmentService;
 import Support.Service.service.FailureService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,16 @@ public class FailureController {
 
     @Autowired
     private FailureService failureService;
+
+    @Autowired
+    private EquipmentService equipmentService;
+
+    @PreAuthorize("hasRole('ADMIN')")
+    @GetMapping("/{equipmentId}")
+    public ResponseEntity<Failure> getFailure(@PathVariable Long equipmentId) {
+        Failure failure = (Failure) failureService.getFailureByEquipmentId(equipmentId);
+        return ResponseEntity.ok(failure);
+    }
 
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
@@ -28,7 +39,7 @@ public class FailureController {
         return ResponseEntity.ok(failure);
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/{failureId}")
     public void deleteFailure(@PathVariable Long failureId) {
         failureService.deleteFailure(failureId);

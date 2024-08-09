@@ -32,17 +32,12 @@ public class SupportTicketService {
         return supportTicketRepository.findAll();
     }
 
-    public SupportTicket findById(Long ticketId) {
-        return supportTicketRepository.findById(ticketId).orElse(null);
-    }
 
     @Transactional
     public SupportTicket createTicket(User user, SupportTicketDto supportTicketDto) {
         SupportTicket supportTicket = new SupportTicket();
         Equipment equipment = equipmentRepository.findById(supportTicketDto.getEquipmentId()).orElse(null);
         Failure failure = failureRepository.findById(supportTicketDto.getFailureId()).orElse(null);
-
-        System.out.println("eeeeeeeeeeeeeeeeeee"+user.toString());
 
         supportTicket.setSubject(supportTicketDto.getSubject());
         supportTicket.setEquipment(equipment);
@@ -75,15 +70,19 @@ public class SupportTicketService {
     }
 
 
-    public List<SupportTicket> findTicketsByTechnician(Long technicianId) {
-        return supportTicketRepository.findSupportTicketByTechnicianPersonId(technicianId);
+
+    public SupportTicket updateTicketStatus(SupportTicket supportTicket,Long ticketId) {
+        SupportTicket supportTicket1 = supportTicketRepository.findById(ticketId).orElse(null);
+        assert supportTicket != null;
+        supportTicket1.setTicketStatus(supportTicket.getTicketStatus());
+        return supportTicketRepository.save(supportTicket1);
     }
 
-    public SupportTicket updateTicketStatus(Long ticketId, TicketStatus newStatus) {
-        SupportTicket supportTicket = supportTicketRepository.findById(ticketId).orElse(null);
-        assert supportTicket != null;
-        supportTicket.setTicketStatus(newStatus);
-        return supportTicketRepository.save(supportTicket);
+    public SupportTicket updateTicket(Long ticketId,TicketStatus newStatus) {
+        SupportTicket supportTicket1 = supportTicketRepository.findById(ticketId).orElse(null);
+        assert supportTicket1 != null;
+        supportTicket1.setTicketStatus(newStatus);
+        return supportTicketRepository.save(supportTicket1);
     }
 
     public List<SupportTicket> findTicketsByUser(Long userId) {

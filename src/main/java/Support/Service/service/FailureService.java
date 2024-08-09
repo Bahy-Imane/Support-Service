@@ -1,6 +1,7 @@
 package Support.Service.service;
 
 import Support.Service.model.Failure;
+import Support.Service.model.Person;
 import Support.Service.repository.EquipmentRepository;
 import Support.Service.repository.FailureRepository;
 import Support.Service.repository.PersonRepository;
@@ -14,6 +15,10 @@ public class FailureService {
 
     @Autowired
     private FailureRepository failureRepository;
+
+
+    @Autowired
+    private EquipmentRepository equipmentRepository;
 
 
     public List<Failure> getAllFailures() {
@@ -39,33 +44,8 @@ public class FailureService {
         failureRepository.deleteById(failureId);
     }
 
-//    public void failureSignal(Long userId,Long equipmentId, FailureDtoSignal failureDtoSignal) {
-//        User user = (User) personRepository.findById(userId).orElseThrow(null);
-//        Equipment equipment = equipmentRepository.findById(equipmentId).get();
-//        Failure failure = new Failure();
-//        failure.setUser(user);
-//        failure.setEquipment(equipment);
-//        failure.setDescription(failureDtoSignal.getDescription());
-//        failure.setReportedAt(LocalDateTime.now());
-//        failureRepository.save(failure);
-//    }
-//
-//
-//    public void registerFailure(FailureDto2 failureDto2) {
-//        Failure failure = failureRepository.findByUserAndEquipment(
-//                failureDto2.getUserId(), failureDto2.getEquipmentId()).orElseThrow(() -> new RuntimeException("Failure not found"));
-//
-//        failure.setDescription(failureDto2.getDescription());
-//        failure.setFStatus(FailureStatus.valueOf(failureDto2.getStatut()));
-//        failure.setReportedBy(failureDto2.getReportedBy());
-//        failureRepository.save(failure);
-//    }
-//
-//
-//    public void updatePanneStatus(Long failureId, Failure failure) {
-//        Failure failure1 = failureRepository.findById(failureId).orElseThrow();
-//        failure1.setFStatus(failure.getFStatus());
-//        failureRepository.save(failure1);
-//    }
+    public List<Failure> getFailureByEquipmentId(Long equipmentId) {
+        return failureRepository.findFailureByEquipmentsId(equipmentId);
+    }
 
 }

@@ -1,6 +1,7 @@
 package Support.Service.model;
 
 import Support.Service.enums.FailureType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -28,11 +29,15 @@ public class Failure {
     private FailureType type;
 
     @OneToMany(mappedBy = "failure", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<SupportTicket> supportTickets;
 
-
-    @OneToMany(mappedBy = "failure", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<FailureHistory> failureHistory;
-
-
+    @ManyToMany
+    @JsonIgnore
+    @JoinTable(
+            name = "failure_equipment",
+            joinColumns = @JoinColumn(name = "failure_id"),
+            inverseJoinColumns = @JoinColumn(name = "equipment_id")
+    )
+    private List<Equipment> equipments;
 }
