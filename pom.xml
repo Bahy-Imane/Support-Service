@@ -119,6 +119,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<finalName>support-service</finalName>
 	</build>
 
 </project>
