@@ -1,0 +1,123 @@
+.header {
+  background-color: #2f3170;
+  color: #ffffff;
+  padding: 20px;
+  text-align: center;
+
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+
+    .logo {
+      h1 {
+       img{
+       width: 160px;
+       }
+      }
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+
+      li {
+        list-style: none;
+
+        a {
+          text-decoration: none;
+          color: #ffffff;
+          font-size: 16px;
+
+          &:hover {
+            color: #b6b6b6;
+          }
+        }
+      }
+    }
+
+    .nav-buttons {
+      display: flex;
+      gap: 15px;
+
+      .login-btn, .signup-btn {
+        text-decoration: none;
+        padding: 10px 20px;
+        border-radius: 20px;
+        font-size: 14px;
+
+        &:hover {
+          background-color: #444;
+        }
+      }
+
+      .login-btn {
+        color: #fff;
+        background-color: transparent;
+        border: 1px solid #fff;
+      }
+
+      .signup-btn {
+        color: #0c0d24;
+        background-color: #ffffff;
+        border: none;
+      }
+    }
+  }
+
+  .hero {
+    margin-top: 50px;
+
+    h2 {
+      font-size: 40px;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+
+    p {
+      font-size: 16px;
+      color: #b6b6b6;
+      margin-bottom: 30px;
+    }
+
+    .subscribe {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 40px;
+
+      input {
+        padding: 15px;
+        width: 300px;
+        border: none;
+        border-radius: 20px 0 0 20px;
+        font-size: 14px;
+        outline: none;
+      }
+
+      button {
+        padding: 15px 25px;
+        background-color: #3a50fa;
+        color: #fff;
+        border: none;
+        border-radius: 0 20px 20px 0;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #2c3ebc;
+        }
+      }
+    }
+
+    .partners {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+
+      img {
+        width: 100px;
+      }
+    }
+  }
+}
