@@ -7,7 +7,7 @@ import {Technician} from "../model/technician.model";
   providedIn: 'root'
 })
 export class TechnicianService {
-  private baseUrl = 'http://localhost:8080/api/technician';
+  private baseUrl = 'http://localhost:8081/api/technician';
 
   constructor(private http: HttpClient) {}
 
