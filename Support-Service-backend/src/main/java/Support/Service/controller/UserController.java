@@ -26,7 +26,7 @@ public class UserController {
     }
 
     @PreAuthorize("hasRole('ADMIN')")
-    @GetMapping("/{userId}")
+    @GetMapping("/user/{userId}")
     public ResponseEntity<User> getUserById(@PathVariable Long userId) {
         User user = userService.getUserById(userId);
         if (user != null) {
@@ -38,7 +38,7 @@ public class UserController {
 
 
     @PreAuthorize("hasRole('ADMIN')")
-    @PostMapping("/add")
+    @PostMapping("/add-user")
     public ResponseEntity<User> addUser(@RequestBody PersonDto personDto) {
         User user = userService.addUser(personDto);
         if (user != null) {
@@ -49,7 +49,7 @@ public class UserController {
 
 
     @PreAuthorize("hasRole('ADMIN')")
-    @DeleteMapping("/delete/{userId}")
+    @DeleteMapping("/delete-user/{userId}")
     public ResponseEntity<Void> deleteUserById(@PathVariable Long userId) {
         userService.deleteUserById(userId);
         return ResponseEntity.noContent().build();
@@ -57,7 +57,7 @@ public class UserController {
 
 
     @PreAuthorize("hasRole('ADMIN')")
-    @PutMapping("/update/{userId}")
+    @PutMapping("/update-user/{userId}")
     public ResponseEntity<User> updateUser(@PathVariable Long userId, @RequestBody User user) {
         User updatedUser = userService.updateUser(userId, user);
         if (updatedUser != null) {

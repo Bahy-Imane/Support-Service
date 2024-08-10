@@ -20,28 +20,28 @@ public class FailureController {
     private EquipmentService equipmentService;
 
     @PreAuthorize("hasRole('ADMIN')")
-    @GetMapping("/{equipmentId}")
+    @GetMapping("/all/{equipmentId}")
     public ResponseEntity<Failure> getFailure(@PathVariable Long equipmentId) {
         Failure failure = (Failure) failureService.getFailureByEquipmentId(equipmentId);
         return ResponseEntity.ok(failure);
     }
 
     @PreAuthorize("hasRole('ADMIN')")
-    @PostMapping
+    @PostMapping("/add")
     public ResponseEntity<Failure> addFailure(@RequestBody Failure failure) {
         failureService.addFailure(failure);
         return ResponseEntity.ok(failure);
     }
 
     @PreAuthorize("hasRole('ADMIN')")
-    @PutMapping("/{failureId}")
+    @PutMapping("/update/{failureId}")
     public ResponseEntity<Failure> updateFailure(@PathVariable Long failureId, @RequestBody Failure failure) {
         failureService.updateFailure(failureId, failure);
         return ResponseEntity.ok(failure);
     }
 
     @PreAuthorize("hasRole('ADMIN')")
-    @DeleteMapping("/{failureId}")
+    @DeleteMapping("/delete/{failureId}")
     public void deleteFailure(@PathVariable Long failureId) {
         failureService.deleteFailure(failureId);
     }

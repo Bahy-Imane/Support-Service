@@ -42,7 +42,7 @@ public class SupportTicketController {
     }
 
     @PreAuthorize("hasRole('TECHNICIAN')")
-    @PutMapping("/status/{ticketId}")
+    @PutMapping("/status-update/{ticketId}")
     public SupportTicket updateTicketStatus(@PathVariable Long ticketId, @RequestBody SupportTicket supportTicket) {
         return supportTicketService.updateTicketStatus(supportTicket,ticketId);
 
@@ -50,7 +50,7 @@ public class SupportTicketController {
 
 
     @PreAuthorize("hasRole('ADMIN')")
-    @GetMapping
+    @GetMapping("all")
     public ResponseEntity<List<SupportTicket>> getAllTickets() {
         List<SupportTicket> tickets = supportTicketService.findAll();
         return new ResponseEntity<>(tickets, HttpStatus.OK);
@@ -58,12 +58,12 @@ public class SupportTicketController {
 
 
 
-    @PreAuthorize("hasRole('USER')")
-    @GetMapping("/user/{userId}")
-    public ResponseEntity<List<SupportTicket>> getTicketsByUser(@PathVariable Long userId) {
-        List<SupportTicket> tickets = supportTicketService.findTicketsByUser(userId);
-        return new ResponseEntity<>(tickets, HttpStatus.OK);
-    }
+//    @PreAuthorize("hasRole('USER')")
+//    @GetMapping("/user/{userId}")
+//    public ResponseEntity<List<SupportTicket>> getTicketsByUser(@PathVariable Long userId) {
+//        List<SupportTicket> tickets = supportTicketService.findTicketsByUser(userId);
+//        return new ResponseEntity<>(tickets, HttpStatus.OK);
+//    }
 
     @PreAuthorize("hasAnyRole('USER', 'ADMIN', 'TECHNICIAN')")
     @GetMapping("/{ticketId}")

@@ -21,28 +21,28 @@ public class TechnicianController {
     private TechnicianService technicianService;
 
     @PreAuthorize("hasRole('ADMIN')")
-    @GetMapping
+    @GetMapping("all")
     public ResponseEntity<List<Technician>> getAllTechnicians() {
         List<Technician> technicians = technicianService.getAllTechnicians();
         return new ResponseEntity<>(technicians, HttpStatus.OK);
     }
 
     @PreAuthorize("hasRole('ADMIN')")
-    @GetMapping("/{technicianId}")
+    @GetMapping("/tech/{technicianId}")
     public ResponseEntity<Technician> getTechnicianById(@PathVariable Long technicianId) {
         Technician technician = technicianService.getTechnicianById(technicianId);
         return new ResponseEntity<>(technician, HttpStatus.OK);
     }
 
     @PreAuthorize("hasRole('ADMIN')")
-    @PostMapping("/add")
+    @PostMapping("/add-tech")
     public ResponseEntity<Technician> addTechnician(@RequestBody PersonDto personDto) {
         Technician newTechnician = technicianService.addTechnician(personDto);
         return new ResponseEntity<>(newTechnician, HttpStatus.CREATED);
     }
 
     @PreAuthorize("hasRole('ADMIN')")
-    @PutMapping("/update/{technicianId}")
+    @PutMapping("/update-tech/{technicianId}")
     public ResponseEntity<Technician> updateTechnician(
             @PathVariable Long technicianId,
             @RequestBody Technician technician) {
@@ -51,7 +51,7 @@ public class TechnicianController {
     }
 
     @PreAuthorize("hasRole('ADMIN')")
-    @DeleteMapping("/delete/{technicianId}")
+    @DeleteMapping("/delete-tech/{technicianId}")
     public ResponseEntity<Void> deleteTechnicianById(@PathVariable Long technicianId) {
         technicianService.deleteTechnicianById(technicianId);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
