@@ -7,9 +7,14 @@ import {Failure} from "../model/failure.model";
   providedIn: 'root'
 })
 export class FailureService {
-  private baseUrl = 'http://localhost:8081/api/failure';
+  private baseUrl = 'http://localhost:8080/api/failure';
 
   constructor(private http: HttpClient) {}
+
+
+  getAllFailures():Observable<Failure[]>{
+   return  this.http.get<Failure[]>(`${this.baseUrl}/all`)
+  }
 
   getFailureByEquipmentId(equipmentId: number): Observable<Failure> {
     return this.http.get<Failure>(`${this.baseUrl}/all/${equipmentId}`);

@@ -1,0 +1,24 @@
+<div class="equipment-list-container">
+  <div class="header">
+    <h2 class="list-title">Liste des Équipements</h2>
+    <button (click)="addEquipment()" class="btn btn-add">Ajouter un Équipement</button>
+  </div>
+  <div class="card-container">
+    <div class="card" *ngFor="let equipment of equipmentList">
+      <img [src]="equipment.img" alt="{{ equipment.name }}" class="card-img" />
+      <div class="card-body">
+        <h3 class="card-title">{{ equipment.name }}</h3>
+        <p class="card-type">{{ equipment.type }}</p>
+        <p class="card-status">{{ equipment.status }}</p>
+        <div class="card-actions">
+          <button (click)="editEquipment(equipment.equipmentId)" class="btn btn-edit">
+            <i class="fas fa-edit"></i> Éditer
+          </button>
+          <button (click)="deleteEquipment(equipment.equipmentId)" class="btn btn-delete">
+            <i class="fas fa-trash-alt"></i> Supprimer
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

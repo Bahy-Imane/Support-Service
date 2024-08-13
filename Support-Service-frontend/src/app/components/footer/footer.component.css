@@ -1,68 +1,70 @@
+/* src/app/footer/footer.component.css */
 .footer {
   text-align: center;
   padding: 20px;
-  background-color: #fff;
+  background-color: #f8f9fa;
   color: #333;
+}
 
-  .footer-title {
-    font-size: 24px;
-    color: #0000ff;
+.footer-title {
+  font-size: 24px;
+  color: #007bff;
+  margin-bottom: 10px;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+
+  li {
+    a {
+      color: #333;
+      text-decoration: none;
+      font-size: 14px;
+
+      &:hover {
+        color: #007bff;
+      }
+    }
+  }
+}
+
+.footer-social {
+  margin-top: 20px;
+
+  p {
+    font-size: 16px;
     margin-bottom: 10px;
   }
 
-  .footer-links {
+  .social-icons {
     list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 10px;
 
     li {
       a {
         color: #333;
+        font-size: 18px;
         text-decoration: none;
-        font-size: 14px;
 
         &:hover {
-          color: #0000ff;
+          color: #007bff;
         }
       }
     }
   }
+}
 
-  .footer-social {
-    margin-top: 20px;
-
-    p {
-      font-size: 16px;
-      margin-bottom: 10px;
-    }
-
-    .social-icons {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-
-      li {
-        a {
-          color: #333;
-          font-size: 18px;
-
-          &:hover {
-            color: #0000ff;
-          }
-        }
-      }
-    }
-  }
-
-  .footer-rights {
-    margin-top: 20px;
-    font-size: 12px;
-    color: #aaa;
-  }
+.footer-rights {
+  margin-top: 20px;
+  font-size: 12px;
+  color: #aaa;
 }

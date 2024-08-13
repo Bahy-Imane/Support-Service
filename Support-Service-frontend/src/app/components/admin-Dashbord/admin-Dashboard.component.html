@@ -1,0 +1,40 @@
+<div class="sidebar">
+  <div class="sidebar-header">
+    <img src="assets/monsteradmin-logo.png" alt="monsteradmin logo" class="logo">
+  </div>
+  <ul class="nav flex-column">
+      <a class="nav-link" (click)="onSelect('dashboard')">
+        <i class="fas fa-th-large"></i>
+        Dashboard
+      </a>
+
+      <a class="nav-link" (click)="onSelect('users')">
+        <i class="fas fa-users"></i>
+        Users
+      </a>
+      <a class="nav-link" (click)="onSelect('technicians')">
+        <i class="fas fa-user-cog"></i>
+        Technicians
+      </a>
+      <a class="nav-link" (click)="onSelect('equipment')">
+        <i class="fas fa-tools"></i>
+        Equipments
+      </a>
+      <a class="nav-link" (click)="onSelect('failures')">
+        <i class="fas fa-exclamation-circle"></i>
+        Failures
+      </a>
+
+      <a class="nav-link" (click)="onSelect('profile')">
+        <i class="fas fa-user"></i>
+        Profile
+      </a>
+
+
+      <a class="nav-link register-link" (click)="onSelect('register')">
+        <i class="fas fa-user-plus"></i>
+        Register
+      </a>
+
+  </ul>
+</div>

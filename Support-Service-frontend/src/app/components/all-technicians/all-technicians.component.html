@@ -1,0 +1,29 @@
+<div class="technician-list-container">
+  <div class="header">
+    <h2 class="list-title">Liste des Techniciens</h2>
+    <button (click)="addTechnician()" class="btn btn-add">Ajouter un Technicien</button>
+  </div>
+  <table class="technician-table">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nom</th>
+      <th>Email</th>
+      <th>Rôle</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let technician of technicians">
+      <td>{{ technician.personId }}</td>
+      <td>{{ technician.userName }}</td>
+      <td>{{ technician.email }}</td>
+      <td>{{ technician.role }}</td>
+      <td>
+        <button (click)="editTechnician(technician.personId)" class="btn btn-edit">Éditer</button>
+        <button (click)="deleteTechnician(technician.personId)" class="btn btn-delete">Supprimer</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

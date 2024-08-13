@@ -1,0 +1,65 @@
+.failure-list-container {
+  position: relative;
+  left: 45px;
+  max-width: 90%;
+  margin-top: 40px;
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+
+  .list-title {
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #1a75ff;
+  }
+
+  .failure-table {
+    width: 100%;
+    border-collapse: collapse;
+    thead {
+      background-color: #f4f4f4;
+      th {
+        padding: 10px;
+        border-bottom: 2px solid #ddd;
+        text-align: left;
+      }
+    }
+    tbody {
+      tr {
+        &:nth-child(odd) {
+          background-color: #f9f9f9;
+        }
+        td {
+          padding: 10px;
+          border-bottom: 1px solid #ddd;
+        }
+        .btn {
+          border: none;
+          padding: 5px 10px;
+          font-size: 14px;
+          color: #fff;
+          border-radius: 4px;
+          cursor: pointer;
+          transition: background-color 0.3s;
+          margin-right: 5px;
+        }
+        .btn-edit {
+          background-color: #1a75ff;
+          &:hover {
+            background-color: #155aa2;
+          }
+        }
+        .btn-delete {
+          background-color: #e74c3c;
+          &:hover {
+            background-color: #c0392b;
+          }
+        }
+      }
+    }
+  }
+}

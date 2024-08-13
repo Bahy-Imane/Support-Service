@@ -1,0 +1,24 @@
+<div class="failure-list-container">
+  <h2 class="list-title">Liste des Échecs</h2>
+  <table class="failure-table">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Description</th>
+      <th>Type</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let failure of failures">
+      <td>{{ failure.failureId }}</td>
+      <td>{{ failure.description }}</td>
+      <td>{{ failure.type }}</td>
+      <td>
+        <button (click)="editFailure(failure.failureId)" class="btn btn-edit">Éditer</button>
+        <button (click)="deleteFailure(failure.failureId)" class="btn btn-delete">Supprimer</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

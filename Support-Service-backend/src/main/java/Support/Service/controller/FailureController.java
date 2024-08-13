@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @CrossOrigin("http://localhost:4200")
 @RestController
 @RequestMapping("/api/failure")
@@ -16,8 +18,18 @@ public class FailureController {
     @Autowired
     private FailureService failureService;
 
-    @Autowired
-    private EquipmentService equipmentService;
+
+
+    @PreAuthorize("hasRole('ADMIN')")
+    @GetMapping("/all")
+    public ResponseEntity<List<Failure>> getAllFailures() {
+        List<Failure> failures = failureService.getAllFailures();
+        if (failures.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(failures);
+    }
+
 
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/all/{equipmentId}")

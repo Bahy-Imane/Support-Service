@@ -1,1 +1,103 @@
-<p>login works!</p>
+<div class="login-container">
+  <div class="login-form">
+    <h2 class="text-center">Welcome</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="login(loginForm)">
+      <div class="form-group">
+        <label for="userNameOrEmail" class="form-label">Email or Username</label>
+        <div class="input-group">
+          <span class="input-group-text"><i class="fa-solid fa-user"></i></span>
+          <input
+            type="text"
+            id="userNameOrEmail"
+            formControlName="userNameOrEmail"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': loginForm.get('userNameOrEmail')?.invalid && loginForm.get('userNameOrEmail')?.touched }"
+          />
+        </div>
+        <div *ngIf="loginForm.get('userNameOrEmail')?.invalid && loginForm.get('userNameOrEmail')?.touched" class="invalid-feedback">
+          <span *ngIf="loginForm.get('userNameOrEmail')?.errors?.['required']">Email or Username is required.</span>
+          <span *ngIf="loginForm.get('userNameOrEmail')?.errors?.['pattern']">Please enter a valid email address.</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password" class="form-label">Password</label>
+        <div class="input-group">
+          <span class="input-group-text"><i class="fa-solid fa-lock"></i></span>
+          <input
+            type="password"
+            id="password"
+            formControlName="password"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': loginForm.get('password')?.invalid && loginForm.get('password')?.touched }"
+          />
+        </div>
+        <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="invalid-feedback">
+          <span *ngIf="loginForm.get('password')?.errors?.['required']">Password is required.</span>
+        </div>
+      </div>
+
+      <button type="submit" class="btn-submit" [disabled]="loginForm.invalid">Login</button>
+
+      <div *ngIf="failure" class="alert alert-danger mt-3">
+        {{ emailErrorMessage }}
+      </div>
+
+      <div *ngIf="success" class="alert alert-success mt-3">
+        Login successful!
+      </div>
+    </form>
+  </div>
+  <div class="login-image">
+    <img src="assets/Image/magicstudio-art%20(2).jpg" alt="Login Image" />
+  </div>
+</div>
+
+
+
+
+
+
+<!--<div class="login-container mt-5 mx-auto shadow-lg p-4" style="max-width: 400px; background-color: #ffffff; border-radius: 8px;">-->
+<!--  <h2 class="text-center mb-4">Login</h2>-->
+<!--  <form [formGroup]="loginForm" (ngSubmit)="login(loginForm)">-->
+<!--    <div class="form-group">-->
+<!--      <label for="userNameOrEmail">Email or Username</label>-->
+<!--      <input-->
+<!--        type="text"-->
+<!--        id="userNameOrEmail"-->
+<!--        formControlName="userNameOrEmail"-->
+<!--        class="form-control"-->
+<!--        [ngClass]="{ 'is-invalid': loginForm.get('userNameOrEmail')?.invalid && loginForm.get('userNameOrEmail')?.touched }"-->
+<!--      />-->
+<!--      <div *ngIf="loginForm.get('userNameOrEmail')?.invalid && loginForm.get('userNameOrEmail')?.touched" class="invalid-feedback">-->
+<!--        <span *ngIf="loginForm.get('userNameOrEmail')?.errors?.['required']">Email or Username is required.</span>-->
+<!--        <span *ngIf="loginForm.get('userNameOrEmail')?.errors?.['pattern']">Please enter a valid email address.</span>-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--    <div class="form-group">-->
+<!--      <label for="password">Password</label>-->
+<!--      <input-->
+<!--        type="password"-->
+<!--        id="password"-->
+<!--        formControlName="password"-->
+<!--        class="form-control"-->
+<!--        [ngClass]="{ 'is-invalid': loginForm.get('password')?.invalid && loginForm.get('password')?.touched }"-->
+<!--      />-->
+<!--      <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="invalid-feedback">-->
+<!--        <span *ngIf="loginForm.get('password')?.errors?.['required']">Password is required.</span>-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--    <button type="submit" class="btn btn-primary btn-block" [disabled]="loginForm.invalid">Login</button>-->
+
+<!--    <div *ngIf="failure" class="alert alert-danger mt-3">-->
+<!--      {{ emailErrorMessage }}-->
+<!--    </div>-->
+
+<!--    <div *ngIf="success" class="alert alert-success mt-3">-->
+<!--      Login successful!-->
+<!--    </div>-->
+<!--  </form>-->
+<!--</div>-->

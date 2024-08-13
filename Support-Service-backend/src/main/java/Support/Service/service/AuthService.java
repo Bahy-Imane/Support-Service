@@ -5,6 +5,7 @@ import Support.Service.dto.LoginDto;
 import Support.Service.dto.SignUpDto;
 import Support.Service.enums.Role;
 import Support.Service.jwt.JwtTokenProvider;
+import Support.Service.model.Admin;
 import Support.Service.model.Person;
 import Support.Service.model.User;
 import Support.Service.repository.PersonRepository;
@@ -40,12 +41,12 @@ public class AuthService {
         System.out.println("token"+token);
         Person person = personRepository.findByUserNameOrEmail(loginDto.getUserNameOrEmail(), loginDto.getUserNameOrEmail());
         System.out.println("person"+person);
+
         JwtAuthResponse response = new JwtAuthResponse();
         response.setAccessToken(token);
-
         response.setTokenType("Bearer");
         response.setUserName(person.getUsername());
-//        response.setRole(person.getRole());
+        response.setRole(String.valueOf(person.getRole()));
         response.setPersonId(person.getPersonId());
         System.out.println("response"+response);
         return response;
@@ -55,7 +56,7 @@ public class AuthService {
     public String signUp(SignUpDto signUpDto) {
 //        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
-        Person person = new User();
+        Person person = new Admin();
         person.setUserName(signUpDto.getUserName());
         person.setEmail(signUpDto.getEmail());
         person.setRole(Role.ADMIN);

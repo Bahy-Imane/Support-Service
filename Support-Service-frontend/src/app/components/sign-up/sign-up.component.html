@@ -1,1 +1,39 @@
-<p>sign-up works!</p>
+<!--<div class="modal">-->
+<!--  <div class="modal-content">-->
+<!--    <h2>Sign Up</h2>-->
+<!--    <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">-->
+<!--    <div class="form-group">-->
+<!--        <label for="userName">Username</label>-->
+<!--        <input id="userName" formControlName="userName" type="text" placeholder="Enter your username" />-->
+<!--        <div *ngIf="formControls.userName.invalid && formControls.userName.touched" class="error">-->
+<!--          <p *ngIf="formControls.userName.hasError('required')">Username is required.</p>-->
+<!--          <p *ngIf="formControls.userName.hasError('minlength')">Username must be at least 3 characters long.</p>-->
+<!--          <p *ngIf="formControls.userName.hasError('maxlength')">Username cannot be more than 10 characters long.</p>-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--      <div class="form-group">-->
+<!--        <label for="email">Email</label>-->
+<!--        <input id="email" formControlName="email" type="email" placeholder="Enter your email" />-->
+<!--        <div *ngIf="formControls.email.invalid && formControls.email.touched" class="error">-->
+<!--          <p *ngIf="formControls.email.hasError('required')">Email is required.</p>-->
+<!--          <p *ngIf="formControls.email.hasError('email')">Enter a valid email address.</p>-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--      <div class="form-group">-->
+<!--        <label for="password">Password</label>-->
+<!--        <input id="password" formControlName="password" type="password" placeholder="Enter your password" />-->
+<!--        <div *ngIf="formControls.password.invalid && formControls.password.touched" class="error">-->
+<!--          <p *ngIf="formControls.password.hasError('required')">Password is required.</p>-->
+<!--          <p *ngIf="formControls.password.hasError('minlength')">Password must be at least 8 characters long.</p>-->
+<!--          <p *ngIf="formControls.password.hasError('pattern')">Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character.</p>-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--      <button type="submit" [disabled]="signUpForm.invalid">Sign Up</button>-->
+<!--      <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>-->
+<!--    </form>-->
+<!--  </div>-->
+<!--</div>-->
+<router-outlet />
