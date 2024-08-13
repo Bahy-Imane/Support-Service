@@ -8,10 +8,14 @@ import {AllTechniciansComponent} from "./components/all-technicians/all-technici
 import {AllUsersComponent} from "./components/all-users/all-users.component";
 import {AllFailuresComponent} from "./components/all-failures/all-failures.component";
 import {AllEquipmentsComponent} from "./components/all-equipments/all-equipments.component";
+import {AddUserComponent} from "./components/add-user/add-user.component";
+import {AuthGuard} from "./core/services/auth-guard.service";
+import {RoleGuard} from "./core/services/role-guard.service";
+import {Role} from "./core/enum/role.model";
 
 
 
-export const routes: Routes = [
+/*export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   // { path: 'signup', component: SignUpComponent },
@@ -20,10 +24,58 @@ export const routes: Routes = [
   {path: 'technicians', component: AllTechniciansComponent},
   {path: 'users', component: AllUsersComponent},
   {path: 'failures', component: AllFailuresComponent},
+  { path: 'admin', component: AdminDashboardComponent, children: [
+      { path: 'users', component: AllUsersComponent },
+    ]},
 
 
   // {path: 'allEquipments', component: AdminEquipmentsComponent}
-];
+];*/
+
+export const routes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'login', component: LoginComponent },
+  {
+    path: 'admin-dashboard',
+    component: AdminDashboardComponent,
+    canActivate: [AuthGuard, RoleGuard],
+    data: {expectedRole: Role.ADMIN},
+    children: [
+      {
+        path: 'users',
+        component: AllUsersComponent,
+        canActivate: [AuthGuard, RoleGuard],
+        data: {expectedRole: Role.ADMIN}
+      },
+      {
+        path: 'technicians',
+        component: AllTechniciansComponent,
+        canActivate: [AuthGuard, RoleGuard],
+        data: {expectedRole: Role.ADMIN}
+      },
+      {
+        path: 'equipments',
+        component: AllEquipmentsComponent,
+        canActivate: [AuthGuard, RoleGuard],
+        data: {expectedRole: Role.ADMIN}
+      },
+      {
+        path: 'failures',
+        component: AllFailuresComponent,
+        canActivate: [AuthGuard, RoleGuard],
+        data: {expectedRole: Role.ADMIN}
+      },
+      {
+        path: 'users/add-user',
+        component: AddUserComponent,
+        canActivate: [AuthGuard, RoleGuard],
+        data: {expectedRole: Role.ADMIN}
+      }]}
+
+    ]
+
+
+
 
 
 

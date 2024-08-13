@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {SupportTicket} from "../model/support-ticket.model";
 
@@ -8,6 +8,8 @@ import {SupportTicket} from "../model/support-ticket.model";
 })
 export class SupportTicketService {
   private baseUrl = 'http://localhost:8080/api/supportTicket';
+
+  headers= new  HttpHeaders().set('Authorization','Bearer '+localStorage.getItem('accessToken') || '');
 
   constructor(private http: HttpClient) {}
 

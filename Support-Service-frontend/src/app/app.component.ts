@@ -15,6 +15,8 @@ import {HomeComponent} from "./components/home/home.component";
 export class AppComponent {
   title = 'Support-Service-frontend';
 
+
+
   isLoginVisible = false;
 
   toggleLoginVisibility() {

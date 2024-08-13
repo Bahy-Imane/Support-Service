@@ -5,20 +5,24 @@ import {UserService} from "../../core/services/user.service";
 import {TechnicianService} from "../../core/services/technician.service";
 import {FailureService} from "../../core/services/failure.service";
 import {HeaderComponent} from "../header/header.component";
+import {NgIf} from "@angular/common";
 
 @Component({
-  selector: 'app-admin-home',
+  selector: 'app-admin-dashboard',
   standalone: true,
-  imports: [RouterModule, HeaderComponent],
+  imports: [RouterModule, HeaderComponent, NgIf],
   templateUrl: './admin-dashboard.component.html',
   styleUrls: ['./admin-dashboard.component.css']
 })
 export class AdminDashboardComponent implements OnInit {
-  @Output() itemSelected = new EventEmitter<string>();
+  activeSection :string ='users';
 
-  onSelect(item: string) {
-    this.itemSelected.emit(item);
+
+  onSelect(section: string) {
+    this.activeSection = section;
+    console.log('Active Section:', this.activeSection);
   }
+
 
   allUsersNum?: number;
   allFailuresNum?: number;
@@ -31,7 +35,7 @@ export class AdminDashboardComponent implements OnInit {
               private failureService :FailureService) {}
 
   ngOnInit(): void {
-    this.userService.getAllUsers().subscribe({
+    this.userService.getUsers().subscribe({
       next: (res) => {
           this.allUsersNum = res.length;
       }
@@ -53,7 +57,7 @@ export class AdminDashboardComponent implements OnInit {
       }
     });
 
-    this.technicianService.getAllTechnicians().subscribe({
+    this.technicianService.getTechnicians().subscribe({
       next: (res) => {
           this.allTechniciansNum = res.length;
 

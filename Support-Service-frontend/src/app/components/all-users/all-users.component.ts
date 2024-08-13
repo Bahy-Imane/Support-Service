@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {User} from "../../core/model/user.model";
 import {UserService} from "../../core/services/user.service";
 import {NgForOf} from "@angular/common";
+import {RouterLink, RouterOutlet} from "@angular/router";
 
 
 @Component({
@@ -9,7 +10,9 @@ import {NgForOf} from "@angular/common";
   templateUrl: './all-users.component.html',
   standalone: true,
   imports: [
-    NgForOf
+    NgForOf,
+    RouterLink,
+    RouterOutlet
   ],
   styleUrls: ['./all-users.component.css']
 })
@@ -23,8 +26,8 @@ export class AllUsersComponent implements OnInit {
   }
 
   loadUsers(): void {
-    this.userService.getAllUsers().subscribe({
-      next: (users) => {
+    this.userService.getUsers().subscribe({
+      next: (users:User[]) => {
         this.users = users;
       },
       error: (err) => {
@@ -34,15 +37,6 @@ export class AllUsersComponent implements OnInit {
     });
   }
 
-  addUser(): void {
-
-    console.log('Ajouter un utilisateur');
-  }
-
-  editUser(userId: number): void {
-
-    console.log('Éditer l’utilisateur avec ID:', userId);
-  }
 
   deleteUser(userId: number): void {
     this.userService.deleteUserById(userId).subscribe({

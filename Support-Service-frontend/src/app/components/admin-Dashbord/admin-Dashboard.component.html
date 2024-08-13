@@ -3,38 +3,49 @@
     <img src="assets/monsteradmin-logo.png" alt="monsteradmin logo" class="logo">
   </div>
   <ul class="nav flex-column">
-      <a class="nav-link" (click)="onSelect('dashboard')">
-        <i class="fas fa-th-large"></i>
-        Dashboard
-      </a>
 
-      <a class="nav-link" (click)="onSelect('users')">
-        <i class="fas fa-users"></i>
-        Users
-      </a>
-      <a class="nav-link" (click)="onSelect('technicians')">
-        <i class="fas fa-user-cog"></i>
-        Technicians
-      </a>
-      <a class="nav-link" (click)="onSelect('equipment')">
-        <i class="fas fa-tools"></i>
-        Equipments
-      </a>
-      <a class="nav-link" (click)="onSelect('failures')">
-        <i class="fas fa-exclamation-circle"></i>
-        Failures
-      </a>
+      <p class="nav-link">Dashboard</p>
 
-      <a class="nav-link" (click)="onSelect('profile')">
-        <i class="fas fa-user"></i>
-        Profile
-      </a>
+    <a class="nav-item" (click)="onSelect('users')">
+      <li routerLink="/admin-dashboard/users" routerLinkActive="active" class="nav-link">
+        <i class="fas fa-users"></i> Users
+      </li>
+    </a>
 
+    <a class="nav-item" (click)="onSelect('technicians')">
+      <li routerLink="/admin-dashboard/technicians" routerLinkActive="active" class="nav-link">
+        <i class="fas fa-user-cog"></i> Technicians
+      </li>
+    </a>
 
-      <a class="nav-link register-link" (click)="onSelect('register')">
-        <i class="fas fa-user-plus"></i>
-        Register
-      </a>
+    <a class="nav-item" (click)="onSelect('equipment')">
+      <li routerLink="/admin-dashboard/equipments" routerLinkActive="active" class="nav-link">
+        <i class="fas fa-tools"></i> Equipments
+      </li>
+    </a>
 
+    <a class="nav-item" (click)="onSelect('failures')">
+      <li routerLink="/admin-dashboard/failures" routerLinkActive="active" class="nav-link">
+        <i class="fas fa-exclamation-circle"></i> Failures
+      </li>
+    </a>
+
+    <a class="nav-item" (click)="onSelect('profile')">
+      <li routerLink="/admin-dashboard/profile" routerLinkActive="active" class="nav-link">
+        <i class="fas fa-user"></i> Profile
+      </li>
+    </a>
+
+    <a class="nav-item register-link" (click)="onSelect('register')">
+      <li routerLink="/admin-dashboard/register" routerLinkActive="active" class="nav-link">
+        <i class="fas fa-user-plus"></i> Register
+      </li>
+    </a>
   </ul>
+
+  <div *ngIf="activeSection === 'users'" class="sub-menu">
+    <p>Users</p>
+  </div>
+
+  <router-outlet></router-outlet>
 </div>

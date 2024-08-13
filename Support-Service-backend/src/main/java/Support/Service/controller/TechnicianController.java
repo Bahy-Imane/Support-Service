@@ -3,6 +3,7 @@ package Support.Service.controller;
 import Support.Service.dto.PersonDto;
 import Support.Service.dto.SignUpDto;
 import Support.Service.model.Technician;
+import Support.Service.model.User;
 import Support.Service.service.TechnicianService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,6 +20,14 @@ public class TechnicianController {
 
     @Autowired
     private TechnicianService technicianService;
+
+
+    @PreAuthorize("hasRole('ADMIN')")
+    @GetMapping
+    public List<Technician> getTechnicians() {
+        return technicianService.getTechniciansByRole();
+    }
+
 
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("all")

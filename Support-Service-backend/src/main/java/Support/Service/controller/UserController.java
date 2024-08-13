@@ -1,6 +1,7 @@
 package Support.Service.controller;
 
 import Support.Service.dto.PersonDto;
+import Support.Service.enums.Role;
 import Support.Service.model.User;
 import Support.Service.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,11 +19,17 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+//    @PreAuthorize("hasRole('ADMIN')")
+//    @GetMapping
+//    public ResponseEntity<List<User>> getAllUsers() {
+//        List<User> users = userService.getAllUsers();
+//        return ResponseEntity.ok(users);
+//    }
+
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping
-    public ResponseEntity<List<User>> getAllUsers() {
-        List<User> users = userService.getAllUsers();
-        return ResponseEntity.ok(users);
+    public List<User> getUsers() {
+        return userService.getUsersByRole();
     }
 
     @PreAuthorize("hasRole('ADMIN')")

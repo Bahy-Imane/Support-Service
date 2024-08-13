@@ -1,10 +1,10 @@
 package Support.Service.service;
 
 import Support.Service.dto.PersonDto;
-import Support.Service.dto.SignUpDto;
 
 import Support.Service.enums.Role;
 import Support.Service.model.Technician;
+import Support.Service.model.User;
 import Support.Service.repository.TechnicianRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -20,6 +20,9 @@ public class TechnicianService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    public List<Technician> getTechniciansByRole() {
+        return technicianRepository.findTechnicianByRole(Role.TECHNICIAN);
+    }
 
     public List<Technician> getAllTechnicians() {
         return technicianRepository.findAll();

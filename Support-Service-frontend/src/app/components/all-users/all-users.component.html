@@ -1,7 +1,10 @@
+
+
+
 <div class="user-list-container">
   <div class="header">
-    <h2 class="list-title">Liste des Utilisateurs</h2>
-    <button (click)="addUser()" class="btn btn-add">Ajouter un Utilisateur</button>
+    <h2 class="list-title">users List</h2>
+    <button routerLink="add-user" class="btn btn-add">Add User</button>
   </div>
   <table class="user-table">
     <thead>
@@ -9,7 +12,6 @@
       <th>ID</th>
       <th>Nom d'utilisateur</th>
       <th>Email</th>
-      <th>Rôle</th>
       <th>Actions</th>
     </tr>
     </thead>
@@ -18,12 +20,14 @@
       <td>{{ user.personId }}</td>
       <td>{{ user.userName }}</td>
       <td>{{ user.email }}</td>
-      <td>{{ user.role }}</td>
+
       <td>
-        <button (click)="editUser(user.personId)" class="btn btn-edit">Éditer</button>
-        <button (click)="deleteUser(user.personId)" class="btn btn-delete">Supprimer</button>
+        <button (click)="deleteUser(user.personId)" class="btn btn-delete">delete</button>
       </td>
     </tr>
     </tbody>
   </table>
+  <router-outlet/>
 </div>
+
+

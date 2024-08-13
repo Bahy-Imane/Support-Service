@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {User} from "../model/user.model";
 import {PersonDto} from "../dto/person-dto.model";
@@ -12,8 +12,10 @@ export class UserService {
 
   constructor(private http: HttpClient) {}
 
-  getAllUsers(): Observable<User[]> {
-    return this.http.get<User[]>(`${this.baseUrl}`);
+   headers= new  HttpHeaders().set('Authorization','Bearer '+localStorage.getItem('accessToken') || '');
+
+  getUsers(): Observable<User[]> {
+    return this.http.get<User[]>(`${this.baseUrl}`,{headers:this.headers});
   }
 
   getUserById(userId: number): Observable<User> {
@@ -21,7 +23,7 @@ export class UserService {
   }
 
   addUser(personDto: PersonDto): Observable<User> {
-    return this.http.post<User>(`${this.baseUrl}/add-user`, personDto);
+    return this.http.post<User>(`${this.baseUrl}/add-user`, personDto,{headers:this.headers});
   }
 
   deleteUserById(userId: number): Observable<void> {

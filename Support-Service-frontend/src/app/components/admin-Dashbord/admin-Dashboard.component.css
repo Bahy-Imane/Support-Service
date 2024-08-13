@@ -1,9 +1,9 @@
 .sidebar {
   margin-top: 60px;
-  width: 260px;
+  width: 230px;
   background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-  padding: 20px 0;
-  height: 100vh;
+  padding: 20px ;
+  height: 80vh;
   box-shadow: 2px 0 12px rgba(0, 0, 0, 0.2);
   border-radius: 0 10px 10px 0;
   color: #fff;

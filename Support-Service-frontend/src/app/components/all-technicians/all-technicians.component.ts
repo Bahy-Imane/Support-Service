@@ -3,13 +3,15 @@ import { Component, OnInit } from '@angular/core';
 import {NgForOf} from "@angular/common";
 import {Technician} from "../../core/model/technician.model";
 import {TechnicianService} from "../../core/services/technician.service";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-technicians',
   templateUrl: './all-technicians.component.html',
   standalone: true,
   imports: [
-    NgForOf
+    NgForOf,
+    RouterLink
   ],
   styleUrls: ['./all-technicians.component.css']
 })
@@ -23,8 +25,8 @@ export class AllTechniciansComponent implements OnInit {
   }
 
   loadTechnicians(): void {
-    this.technicianService.getAllTechnicians().subscribe({
-      next: (technicians) => {
+    this.technicianService.getTechnicians().subscribe({
+      next: (technicians:Technician[]) => {
         this.technicians = technicians;
       },
       error: (err) => {
@@ -33,13 +35,6 @@ export class AllTechniciansComponent implements OnInit {
     });
   }
 
-  addTechnician(): void {
-    console.log('Ajouter un technicien');
-  }
-
-  editTechnician(technicianId: number): void {
-    console.log('Éditer le technicien avec ID:', technicianId);
-  }
 
   deleteTechnician(technicianId: number): void {
     this.technicianService.deleteTechnician(technicianId).subscribe({
