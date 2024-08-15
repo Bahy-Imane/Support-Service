@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Failure} from "../../core/model/failure.model";
 import {FailureService} from "../../core/services/failure.service";
 import {NgForOf} from "@angular/common";
+import {RouterLink} from "@angular/router";
 
 
 @Component({
@@ -9,7 +10,8 @@ import {NgForOf} from "@angular/common";
   templateUrl: './all-failures.component.html',
   standalone: true,
   imports: [
-    NgForOf
+    NgForOf,
+    RouterLink
   ],
   styleUrls: ['./all-failures.component.css']
 })

@@ -1,12 +1,25 @@
-<div class="failure-list-container">
-  <h2 class="list-title">Liste des Échecs</h2>
+<div class="header-container">
+  <div class="header">
+    <h2 class="list-title">
+      <i class="fas fa-exclamation-triangle"></i> Liste des Échecs
+    </h2>
+    <button routerLink="add-failure" class="btn btn-add">
+      <i class="fas fa-plus-circle"></i>
+    </button>
+  </div>
+</div>
+
+
+  <div class="failure-list-container">
   <table class="failure-table">
     <thead>
     <tr>
       <th>ID</th>
       <th>Description</th>
       <th>Type</th>
-      <th>Actions</th>
+      <th>Edit</th>
+      <th>Delete</th>
+
     </tr>
     </thead>
     <tbody>
@@ -15,8 +28,14 @@
       <td>{{ failure.description }}</td>
       <td>{{ failure.type }}</td>
       <td>
-        <button (click)="editFailure(failure.failureId)" class="btn btn-edit">Éditer</button>
-        <button (click)="deleteFailure(failure.failureId)" class="btn btn-delete">Supprimer</button>
+        <button (click)="editFailure(failure.failureId)" class="btn btn-edit">
+          <i class="fas fa-pencil-alt"></i>
+        </button>
+      </td>
+      <td>
+        <button (click)="deleteFailure(failure.failureId)" class="btn btn-delete">
+          <i class="fas fa-trash"></i>
+        </button>
       </td>
     </tr>
     </tbody>

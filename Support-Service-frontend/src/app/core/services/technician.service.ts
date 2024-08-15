@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {Technician} from "../model/technician.model";
+import {SignUpDto} from "../dto/sign-up-dto.model";
 
 @Injectable({
   providedIn: 'root'
@@ -22,8 +23,8 @@ export class TechnicianService {
     return this.http.get<Technician>(`${this.baseUrl}/tech/${technicianId}`,{headers:this.headers});
   }
 
-  addTechnician(technicianDto: any): Observable<Technician> {
-    return this.http.post<Technician>(`${this.baseUrl}/add-tech`, technicianDto,{headers:this.headers});
+  addTechnician(signUpDto: SignUpDto): Observable<Technician> {
+    return this.http.post<Technician>(`${this.baseUrl}/add-tech`, signUpDto,{headers:this.headers});
   }
 
   updateTechnician(technicianId: number, technician: Technician): Observable<Technician> {

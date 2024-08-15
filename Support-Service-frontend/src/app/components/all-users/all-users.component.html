@@ -1,18 +1,24 @@
+<div class="header-container">
+  <div class="header">
+    <h2 class="list-title">
+      <i class="fas fa-list"></i> Users List
+    </h2>
+    <button routerLink="add-user" class="btn btn-add">
+      <i class="fas fa-user-plus"></i>
+    </button>
+  </div>
+</div>
 
 
 
 <div class="user-list-container">
-  <div class="header">
-    <h2 class="list-title">users List</h2>
-    <button routerLink="add-user" class="btn btn-add">Add User</button>
-  </div>
   <table class="user-table">
     <thead>
     <tr>
       <th>ID</th>
-      <th>Nom d'utilisateur</th>
+      <th>UserName</th>
       <th>Email</th>
-      <th>Actions</th>
+      <th>Delete</th>
     </tr>
     </thead>
     <tbody>
@@ -20,14 +26,11 @@
       <td>{{ user.personId }}</td>
       <td>{{ user.userName }}</td>
       <td>{{ user.email }}</td>
-
       <td>
-        <button (click)="deleteUser(user.personId)" class="btn btn-delete">delete</button>
+        <button (click)="deleteUser(user.personId)" class="btn btn-delete"><i class="fas fa-trash-alt"></i></button>
       </td>
     </tr>
     </tbody>
   </table>
-  <router-outlet/>
+  <router-outlet></router-outlet>
 </div>
-
-

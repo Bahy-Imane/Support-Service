@@ -1,65 +1,111 @@
 .failure-list-container {
-  position: relative;
-  left: 45px;
-  max-width: 90%;
-  margin-top: 40px;
-  max-width: 1000px;
-  margin: 20px auto;
+  position: absolute;
+  left: 24%;
+  top: 25%;
+  width: 71%;
+  max-height: 64vh;
+  padding: 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+  overflow-y: auto;
+}
+
+
+.header-container{
+  position: fixed;
+  left: 24%;
+  top: 13%;
+  width: 70%;
+  height: 5%;
   padding: 20px;
   border: 1px solid #ddd;
   border-radius: 8px;
   background-color: #fff;
 
-  .list-title {
-    margin-bottom: 20px;
-    font-size: 24px;
-    font-weight: bold;
-    color: #1a75ff;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
-  .failure-table {
-    width: 100%;
-    border-collapse: collapse;
-    thead {
-      background-color: #f4f4f4;
-      th {
-        padding: 10px;
-        border-bottom: 2px solid #ddd;
-        text-align: left;
-      }
-    }
-    tbody {
-      tr {
-        &:nth-child(odd) {
-          background-color: #f9f9f9;
-        }
-        td {
-          padding: 10px;
-          border-bottom: 1px solid #ddd;
-        }
-        .btn {
-          border: none;
-          padding: 5px 10px;
-          font-size: 14px;
-          color: #fff;
-          border-radius: 4px;
-          cursor: pointer;
-          transition: background-color 0.3s;
-          margin-right: 5px;
-        }
-        .btn-edit {
-          background-color: #1a75ff;
-          &:hover {
-            background-color: #155aa2;
-          }
-        }
-        .btn-delete {
-          background-color: #e74c3c;
-          &:hover {
-            background-color: #c0392b;
-          }
-        }
-      }
-    }
+  .list-title {
+    font-size: 25px;
+    font-weight: bold;
+    color: #1a75ff;
+    margin-top: 0;
   }
+
+  .btn-add {
+    background-color: #1a75ff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin-bottom: 18px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .btn-add:hover {
+    background-color: #155aa2;
+  }
+}
+
+.failure-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.failure-table th,
+.failure-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.failure-table th {
+  background-color: #1f67ff;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.failure-table tr:hover {
+  background-color: #f5f5f5;
+}
+
+.failure-table td {
+  color: #555;
+}
+
+.btn-edit, .btn-delete {
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn-edit {
+  background-color: #1abc9c;
+  color: #fff;
+}
+
+.btn-edit:hover {
+  background-color: #16a085;
+  transform: scale(1.05);
+}
+
+.btn-delete {
+  background-color: #e74c3c;
+  color: #fff;
+}
+
+.btn-delete:hover {
+  background-color: #c0392b;
+  transform: scale(1.05);
 }

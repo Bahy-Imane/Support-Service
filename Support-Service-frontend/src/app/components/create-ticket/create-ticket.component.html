@@ -1,0 +1,26 @@
+<!-- create-ticket-modal.component.html -->
+<div class="modal-overlay">
+  <div class="modal-content">
+    <button class="modal-close" (click)="close()">✕</button>
+    <h2 class="modal-title">Create a New Ticket</h2>
+    <form (ngSubmit)="onSubmit()" #ticketForm="ngForm">
+      <div class="form-group">
+        <label for="equipmentId">Equipment ID</label>
+        <input type="number" id="equipmentId" [(ngModel)]="ticketDto.equipmentId" name="equipmentId" required>
+      </div>
+      <div class="form-group">
+        <label for="failureId">Failure ID</label>
+        <input type="number" id="failureId" [(ngModel)]="ticketDto.failureId" name="failureId" required>
+      </div>
+      <div class="form-group">
+        <label for="subject">Subject</label>
+        <input type="text" id="subject" [(ngModel)]="ticketDto.subject" name="subject" required>
+      </div>
+      <div class="form-actions">
+        <button type="submit" class="btn-primary">Create Ticket</button>
+        <button type="button" class="btn-secondary" (click)="close()">Cancel</button>
+      </div>
+      <div *ngIf="error" class="error-message">{{ error }}</div>
+    </form>
+  </div>
+</div>

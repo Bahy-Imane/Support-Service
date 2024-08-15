@@ -1,5 +1,4 @@
-/* Apply styles to the technician list container */
-.technician-list-container {
+.ticket-list-container {
   position: absolute;
   left: 24%;
   top: 25%;
@@ -11,7 +10,6 @@
   background-color: #fff;
   overflow-y: auto;
 }
-
 .header-container{
   position: fixed;
   left: 24%;
@@ -53,37 +51,37 @@
   }
 }
 
-/* Apply styles to the technician table */
-.technician-table {
+/* Ticket table styling */
+.ticket-table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
 }
 
-.technician-table th,
-.technician-table td {
+.ticket-table th,
+.ticket-table td {
   padding: 12px 15px;
   text-align: left;
   border-bottom: 1px solid #ddd;
 }
 
-.technician-table th {
+.ticket-table th {
   background-color: #1f67ff;
   color: #ffffff;
   font-weight: bold;
 }
 
-.technician-table tr:hover {
+.ticket-table tr:hover {
   background-color: #f5f5f5;
 }
 
-.technician-table td {
+.ticket-table td {
   color: #555;
 }
 
-/* Add styles for delete button */
-.btn-delete {
-  background-color: #e74c3c;
+/* Assign button styling */
+.btn-assign {
+  background-color: #28a745;
   color: #fff;
   padding: 5px 10px;
   border-radius: 4px;
@@ -94,7 +92,11 @@
   transition: background-color 0.3s, transform 0.2s;
 }
 
-.btn-delete:hover {
-  background-color: #c0392b;
+.btn-assign:hover {
+  background-color: #218838;
   transform: scale(1.05);
+}
+
+.btn-assign i {
+  margin-right: 4px;
 }

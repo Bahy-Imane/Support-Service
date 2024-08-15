@@ -1,16 +1,1 @@
-<div class="dashboard-container">
-  <app-admin-home (itemSelected)="onItemSelected($event)"></app-admin-home>
 
-  <div class="content">
-    <ng-container [ngSwitch]="selectedItem">
-      <app-dashboard-content *ngSwitchCase="'dashboard'"></app-dashboard-content>
-      <app- *ngSwitchCase="'users'"></app->
-      <app-technicians *ngSwitchCase="'technicians'"></app-technicians>
-      <app-equipments *ngSwitchCase="'equipment'"></app-equipments>
-      <app-failures *ngSwitchCase="'failures'"></app-failures>
-      <app-profile *ngSwitchCase="'profile'"></app-profile>
-      <app-register *ngSwitchCase="'register'"></app-register>
-      <p *ngSwitchDefault>Select an item from the sidebar</p>
-    </ng-container>
-  </div>
-</div>

@@ -1,0 +1,37 @@
+<div class="header-container">
+  <div class="header">
+    <h2 class="list-title">
+      <i class="fas fa-list"></i>  Tickets List
+    </h2>
+<!--    <button routerLink="add-ticket" class="btn btn-add">-->
+<!--      <i class="fas fa-plus-circle"></i>-->
+<!--    </button>-->
+  </div>
+</div>
+
+
+<div class="ticket-list-container">
+  <table class="ticket-table">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Subject</th>
+      <th>Created At</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let ticket of tickets">
+      <td>{{ ticket.tickettId }}</td>
+      <td>{{ ticket.subject }}</td>
+      <td>{{ ticket.createdAt }}</td>
+      <td>{{ ticket.ticketStatus }}</td>
+      <td>
+        <button (click)="assignTicket(ticket.tickettId)" class="btn btn-assign"><i class="fas fa-tasks"></i>Assign</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <router-outlet></router-outlet>
+</div>

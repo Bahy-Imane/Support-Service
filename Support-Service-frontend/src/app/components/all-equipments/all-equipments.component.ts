@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Equipment} from "../../core/model/equipment.model";
 import {EquipmentService} from "../../core/services/equipment.service";
 import {NgForOf} from "@angular/common";
+import {RouterLink} from "@angular/router";
 
 
 @Component({
@@ -9,7 +10,8 @@ import {NgForOf} from "@angular/common";
   templateUrl: './all-equipments.component.html',
   standalone: true,
   imports: [
-    NgForOf
+    NgForOf,
+    RouterLink
   ],
   styleUrls: ['./all-equipments.component.css']
 })
@@ -40,7 +42,6 @@ export class AllEquipmentsComponent implements OnInit {
   }
 
   editEquipment(equipmentId: number): void {
-    // Logique pour éditer l'équipement sélectionné
     console.log('Éditer l\'équipement avec ID:', equipmentId);
   }
 
@@ -49,11 +50,9 @@ export class AllEquipmentsComponent implements OnInit {
       next: () => {
         this.equipmentList = this.equipmentList.filter(e => e.equipmentId !== equipmentId);
         console.log('Équipement supprimé');
-        // Gérez la suppression réussie (par exemple, affichez un message de succès)
       },
       error: (err) => {
         console.error('Erreur lors de la suppression de l\'équipement', err);
-        // Gérez les erreurs (par exemple, affichez un message d'erreur)
       }
     });
   }

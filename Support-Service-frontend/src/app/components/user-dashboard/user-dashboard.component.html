@@ -1,0 +1,26 @@
+<div class="ticket-list-container">
+  <div class="header">
+    <h2 class="list-title">Tickets List for User {{ userId }}</h2>
+    <button  (click)="openCreateTicketDialog()" routerLink="/create-ticket" class="btn btn-add">Create Ticket</button>
+
+  </div>
+  <table class="ticket-table">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Subject</th>
+      <th>Created At</th>
+      <th>Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let ticket of tickets">
+      <td>{{ ticket.tickettId }}</td>
+      <td>{{ ticket.subject }}</td>
+      <td>{{ ticket.createdAt | date }}</td>
+      <td>{{ ticket.ticketStatus }}</td>
+    </tr>
+    </tbody>
+  </table>
+  <div *ngIf="error" class="error-message">{{ error }}</div>
+</div>

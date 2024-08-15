@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {User} from "../model/user.model";
 import {PersonDto} from "../dto/person-dto.model";
+import {SignUpDto} from "../dto/sign-up-dto.model";
 
 @Injectable({
   providedIn: 'root'
@@ -22,8 +23,8 @@ export class UserService {
     return this.http.get<User>(`${this.baseUrl}/user/${userId}`);
   }
 
-  addUser(personDto: PersonDto): Observable<User> {
-    return this.http.post<User>(`${this.baseUrl}/add-user`, personDto,{headers:this.headers});
+  addUser(signUpDto: SignUpDto): Observable<User> {
+    return this.http.post<User>(`${this.baseUrl}/add-user`, signUpDto,{headers:this.headers});
   }
 
   deleteUserById(userId: number): Observable<void> {

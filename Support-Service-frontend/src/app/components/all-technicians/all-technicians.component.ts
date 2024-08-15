@@ -3,16 +3,17 @@ import { Component, OnInit } from '@angular/core';
 import {NgForOf} from "@angular/common";
 import {Technician} from "../../core/model/technician.model";
 import {TechnicianService} from "../../core/services/technician.service";
-import {RouterLink} from "@angular/router";
+import {RouterLink, RouterOutlet} from "@angular/router";
 
 @Component({
   selector: 'app-technicians',
   templateUrl: './all-technicians.component.html',
   standalone: true,
-  imports: [
-    NgForOf,
-    RouterLink
-  ],
+    imports: [
+        NgForOf,
+        RouterLink,
+        RouterOutlet
+    ],
   styleUrls: ['./all-technicians.component.css']
 })
 export class AllTechniciansComponent implements OnInit {

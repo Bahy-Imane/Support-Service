@@ -89,5 +89,9 @@ public class SupportTicketService {
         return supportTicketRepository.findSupportTicketByUserPersonId(userId);
     }
 
+    public List<SupportTicket> findTicketsByTechnician(Long technicianId) {
+        return supportTicketRepository.findSupportTicketByTechnicianPersonId(technicianId);
+    }
+
 
 }

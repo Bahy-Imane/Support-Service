@@ -1,6 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { FormControl, FormGroup, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
-import {Router, RouterOutlet} from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AuthService } from "../../core/services/auth.service";
 import { LoginDto } from "../../core/dto/login-dto.model";
@@ -44,12 +44,11 @@ export class LoginComponent implements OnInit {
       password: submitData.value.password,
     };
 
-
     this.authService.login(loginDto).subscribe({
       next: (response) => {
         if (response.accessToken) {
           this.success = true;
-          console.log(response.accessToken)
+          console.log(response.accessToken);
           localStorage.setItem('accessToken', response.accessToken);
           localStorage.setItem('tokenType', response.tokenType);
           localStorage.setItem('userName', response.userName);
@@ -57,13 +56,15 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('personId', response.personId.toString());
 
           const userRole = response.role;
-          if (userRole === "USER") {
-            console.log()
-            this.router.navigate(['/userHome']);
-          } else if (userRole === "ADMIN") {
+          const userId = response.personId;
+          const technicianId = response.personId
+
+          if (userRole === 'USER') {
+            this.router.navigate(['/user-dashboard', userId]);
+          } else if (userRole === 'ADMIN') {
             this.router.navigate(['/admin-dashboard']);
-          } else if (userRole === "TECHNICIAN") {
-            this.router.navigate(['/technicianHome']);
+          } else if (userRole === 'TECHNICIAN') {
+            this.router.navigate(['/technician-dashboard',technicianId]);
           }
         } else {
           this.failure = true;
@@ -77,7 +78,4 @@ export class LoginComponent implements OnInit {
       }
     });
   }
-
-
-
 }

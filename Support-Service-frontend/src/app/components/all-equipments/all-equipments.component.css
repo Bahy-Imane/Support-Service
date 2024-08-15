@@ -1,119 +1,140 @@
 .equipment-list-container {
-  position: relative;
-  left: 45px;
-  max-width: 90%;
-  margin-top: 40px;
+  position: absolute;
+  left: 24%;
+  top: 25%;
+  width: 70%;
+  height: 64vh;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+  overflow-y: auto;
+}
+.header-container{
+  position: fixed;
+  left: 24%;
+  top: 13%;
+  width: 70%;
+  height: 5%;
   padding: 20px;
   border: 1px solid #ddd;
   border-radius: 8px;
   background-color: #fff;
 
+
   .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
-
-    .list-title {
-      font-size: 24px;
-      font-weight: bold;
-      color: #1a75ff;
-    }
-
-    .btn-add {
-      background-color: #1a75ff;
-      color: #fff;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-      &:hover {
-        background-color: #155aa2;
-      }
-    }
   }
 
-  .card-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: space-between;
+  .list-title {
+    font-size: 25px;
+    font-weight: bold;
+    color: #1a75ff;
+    margin-top: 0;
   }
 
-  .card {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    overflow: hidden;
-    width: 250px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s;
+  .btn-add {
+    background-color: #1a75ff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin-bottom: 18px;
+    border-radius: 4px;
     cursor: pointer;
-
-    &:hover {
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-    }
-
-    .card-img {
-      width: 100%;
-      height: 150px;
-      object-fit: cover;
-    }
-
-    .card-body {
-      padding: 15px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-
-      .card-title {
-        font-size: 18px;
-        font-weight: bold;
-        color: #333;
-      }
-
-      .card-type, .card-status {
-        font-size: 14px;
-        color: #555;
-      }
-
-      .card-actions {
-        margin-top: auto;
-        display: flex;
-        gap: 10px;
-
-        .btn {
-          border: none;
-          padding: 5px 10px;
-          font-size: 14px;
-          color: #fff;
-          border-radius: 4px;
-          cursor: pointer;
-          display: flex;
-          align-items: center;
-          gap: 5px;
-          transition: background-color 0.3s;
-
-          i {
-            font-size: 16px;
-          }
-        }
-
-        .btn-edit {
-          background-color: #1a75ff;
-          &:hover {
-            background-color: #155aa2;
-          }
-        }
-
-        .btn-delete {
-          background-color: #e74c3c;
-          &:hover {
-            background-color: #c0392b;
-          }
-        }
-      }
-    }
+    transition: background-color 0.3s;
   }
+
+  .btn-add:hover {
+    background-color: #155aa2;
+  }
+}
+
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap ;
+  gap: 20px;
+  justify-content: space-between;
+
+}
+
+.card {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  width: 250px;
+  height: 10%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s;
+  cursor: pointer;
+}
+
+.card:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.card-img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+.card-type, .card-status {
+  font-size: 14px;
+  color: #555;
+}
+
+.card-actions {
+  margin-top: auto;
+  display: flex;
+  gap: 10px;
+}
+
+.btn {
+  border: none;
+  padding: 5px 10px;
+  font-size: 14px;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: background-color 0.3s;
+}
+
+.btn i {
+  font-size: 16px;
+}
+
+.btn-edit {
+  background-color: #1a75ff;
+}
+
+.btn-edit:hover {
+  background-color: #155aa2;
+}
+
+.btn-delete {
+  background-color: #e74c3c;
+}
+
+.btn-delete:hover {
+  background-color: #c0392b;
 }

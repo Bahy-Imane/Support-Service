@@ -1,6 +1,6 @@
 <div class="user-form-container">
   <h2 class="form-title">Add New User</h2>
-  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="addUserForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label for="userName">Username</label>
       <input
@@ -9,20 +9,15 @@
         formControlName="userName"
         class="form-control"
       />
-      <div class="error" *ngIf="userForm.get('userName')?.invalid && userForm.get('userName')?.touched">
+      <div class="error" *ngIf="addUserForm.get('userName')?.invalid && addUserForm.get('userName')?.touched">
         Username is required
       </div>
     </div>
 
     <div class="form-group">
       <label for="email">Email</label>
-      <input
-        type="email"
-        id="email"
-        formControlName="email"
-        class="form-control"
-      />
-      <div class="error" *ngIf="userForm.get('email')?.invalid && userForm.get('email')?.touched">
+      <input type="email" id="email" formControlName="email" class="form-control" />
+      <div class="error" *ngIf="addUserForm.get('email')?.invalid && addUserForm.get('email')?.touched">
         Valid email is required
       </div>
     </div>
@@ -35,24 +30,12 @@
         formControlName="password"
         class="form-control"
       />
-      <div class="error" *ngIf="userForm.get('password')?.invalid && userForm.get('password')?.touched">
+      <div class="error" *ngIf="addUserForm.get('password')?.invalid && addUserForm.get('password')?.touched">
         Password is required
       </div>
     </div>
 
-    <div class="form-group" *ngIf="userForm.contains('role')">
-      <label for="role">Role</label>
-      <select id="role" formControlName="role" class="form-control">
-        <option value="USER">User</option>
-        <option value="ADMIN">Admin</option>
-        <option value="TECHNICIAN">Technician</option>
-      </select>
-      <div class="error" *ngIf="userForm.get('role')?.invalid && userForm.get('role')?.touched">
-        Role is required
-      </div>
-    </div>
-
-    <button routerLink="/admin-dashboard/users" type="submit" [disabled]="userForm.invalid" class="submit-button">
+    <button type="submit" [disabled]="addUserForm.invalid" class="submit-button">
       Add User
     </button>
   </form>

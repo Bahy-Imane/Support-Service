@@ -1,1 +1,60 @@
-<p>add-equipment works!</p>
+<div class="equipment-form-container">
+  <h2 class="form-title">Add New Equipment</h2>
+  <form [formGroup]="addEquipmentForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Equipment Name</label>
+      <input
+        type="text"
+        id="name"
+        formControlName="name"
+        class="form-control"
+      />
+      <div class="error" *ngIf="addEquipmentForm.get('name')?.invalid && addEquipmentForm.get('name')?.touched">
+        Name is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="type">Type</label>
+      <input
+        type="text"
+        id="type"
+        formControlName="type"
+        class="form-control"
+      />
+      <div class="error" *ngIf="addEquipmentForm.get('type')?.invalid && addEquipmentForm.get('type')?.touched">
+        Type is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="status">Status</label>
+      <input
+        type="text"
+        id="status"
+        formControlName="status"
+        class="form-control"
+      />
+      <div class="error" *ngIf="addEquipmentForm.get('status')?.invalid && addEquipmentForm.get('status')?.touched">
+        Status is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="img">Image URL</label>
+      <input
+        type="text"
+        id="img"
+        formControlName="img"
+        class="form-control"
+      />
+      <div class="error" *ngIf="addEquipmentForm.get('img')?.invalid && addEquipmentForm.get('img')?.touched">
+        Valid Image URL is required
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="addEquipmentForm.invalid" class="submit-button">
+      Add Equipment
+    </button>
+  </form>
+</div>

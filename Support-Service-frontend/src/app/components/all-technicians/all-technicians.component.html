@@ -1,8 +1,16 @@
-<div class="technician-list-container">
+<div class="header-container">
   <div class="header">
-    <h2 class="list-title">Liste des Techniciens</h2>
-    <button routerLink="add-user" class="btn btn-add">Ajouter un Technicien</button>
+    <h2 class="list-title">
+      <i class="fas fa-list"></i>  Liste des Techniciens
+    </h2>
+    <button routerLink="add-technician" class="btn btn-add">
+      <i class="fas fa-user-plus"></i>
+    </button>
   </div>
+</div>
+
+
+<div class="technician-list-container">
   <table class="technician-table">
     <thead>
     <tr>
@@ -20,9 +28,10 @@
       <td>{{ technician.email }}</td>
       <td>{{ technician.role }}</td>
       <td>
-        <button (click)="deleteTechnician(technician.personId)" class="btn btn-delete">Supprimer</button>
+        <button (click)="deleteTechnician(technician.personId)" class="btn btn-delete"><i class="fas fa-trash-alt"></i>Supprimer</button>
       </td>
     </tr>
     </tbody>
   </table>
+  <router-outlet></router-outlet>
 </div>

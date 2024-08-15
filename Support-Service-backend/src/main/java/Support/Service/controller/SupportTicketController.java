@@ -57,13 +57,20 @@ public class SupportTicketController {
     }
 
 
+    @PreAuthorize("hasRole('TECHNICIAN')")
+    @GetMapping("/tech/{technicianId}")
+    public ResponseEntity<List<SupportTicket>> getTechnicianTicket(@PathVariable Long technicianId) {
+        List<SupportTicket> tickets =supportTicketService.findTicketsByTechnician(technicianId);
+        return new ResponseEntity<>(tickets, HttpStatus.OK);
+    }
 
-//    @PreAuthorize("hasRole('USER')")
-//    @GetMapping("/user/{userId}")
-//    public ResponseEntity<List<SupportTicket>> getTicketsByUser(@PathVariable Long userId) {
-//        List<SupportTicket> tickets = supportTicketService.findTicketsByUser(userId);
-//        return new ResponseEntity<>(tickets, HttpStatus.OK);
-//    }
+
+    @PreAuthorize("hasRole('USER')")
+    @GetMapping("/user/{userId}")
+    public ResponseEntity<List<SupportTicket>> getTicketsByUser(@PathVariable Long userId) {
+        List<SupportTicket> tickets = supportTicketService.findTicketsByUser(userId);
+        return new ResponseEntity<>(tickets, HttpStatus.OK);
+    }
 
     @PreAuthorize("hasAnyRole('USER', 'ADMIN', 'TECHNICIAN')")
     @GetMapping("/{ticketId}")

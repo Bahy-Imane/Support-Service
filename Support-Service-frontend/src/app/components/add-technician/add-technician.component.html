@@ -1,1 +1,42 @@
-<p>add-technician works!</p>
+<div class="user-form-container">
+  <h2 class="form-title">Add New User</h2>
+  <form [formGroup]="addTechnicianForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="userName">Username</label>
+      <input
+        type="text"
+        id="userName"
+        formControlName="userName"
+        class="form-control"
+      />
+      <div class="error" *ngIf="addTechnicianForm.get('userName')?.invalid && addTechnicianForm.get('userName')?.touched">
+        Username is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" formControlName="email" class="form-control" />
+      <div class="error" *ngIf="addTechnicianForm.get('email')?.invalid && addTechnicianForm.get('email')?.touched">
+        Valid email is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input
+        type="password"
+        id="password"
+        formControlName="password"
+        class="form-control"
+      />
+      <div class="error" *ngIf="addTechnicianForm.get('password')?.invalid && addTechnicianForm.get('password')?.touched">
+        Password is required
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="addTechnicianForm.invalid" class="submit-button">
+      Add User
+    </button>
+  </form>
+</div>

@@ -1,8 +1,16 @@
-<div class="equipment-list-container">
+<div class="header-container">
   <div class="header">
-    <h2 class="list-title">Liste des Équipements</h2>
-    <button (click)="addEquipment()" class="btn btn-add">Ajouter un Équipement</button>
+    <h2 class="list-title">
+      <i class="fas fa-list"></i>
+      Liste des Équipements
+    </h2>
+    <button routerLink="add-equipment" class="btn btn-add">
+      <i class="fas fa-plus-circle"></i>
+    </button>
   </div>
+</div>
+
+<div class="equipment-list-container">
   <div class="card-container">
     <div class="card" *ngFor="let equipment of equipmentList">
       <img [src]="equipment.img" alt="{{ equipment.name }}" class="card-img" />
@@ -12,10 +20,10 @@
         <p class="card-status">{{ equipment.status }}</p>
         <div class="card-actions">
           <button (click)="editEquipment(equipment.equipmentId)" class="btn btn-edit">
-            <i class="fas fa-edit"></i> Éditer
+            <i class="fas fa-edit"></i>
           </button>
           <button (click)="deleteEquipment(equipment.equipmentId)" class="btn btn-delete">
-            <i class="fas fa-trash-alt"></i> Supprimer
+            <i class="fas fa-trash-alt"></i>
           </button>
         </div>
       </div>

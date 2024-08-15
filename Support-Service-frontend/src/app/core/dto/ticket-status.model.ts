@@ -1,2 +1,8 @@
-export class TicketStatus {
+export enum TicketStatus {
+  REPORTED = 'REPORTED',
+  OPEN = 'OPEN',
+  ASSIGNED = 'ASSIGNED',
+  IN_PROGRESS = 'IN_PROGRESS',
+  RESOLVED = 'RESOLVED',
+  CLOSED = 'CLOSED'
 }
